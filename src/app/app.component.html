@@ -1,0 +1,72 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onsubmit()" >
+    <input type="text" name="city" [(ngModel)]="cityName" placeholder="search city">
+  </form>
+</div>
+
+<div class="container" *ngIf="wetherData">
+  <div class="upper">
+    <img src="../assets/images/night.png" alt="" *ngIf="wetherData.main.temp > 15">
+    <img src="../assets/images/morning.cut.jpeg" alt="" *ngIf="wetherData.main.temp <= 15"> 
+
+    <div class="wether-data">
+      <div class="location"> {{wetherData.name}} </div>
+      <div class="temp">{{wetherData.main.temp | number:'1.0-0'}}C                                                  </div>
+    </div>
+  </div>
+
+  <div class="lower-data"> 
+    <!-- <div class="more-info"> -->
+      <div class="more-info-label">
+        MOre Information
+      </div>
+
+      <div class="more-info-container">
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/images/temp cool.png" alt="">
+            <span>Min</span>
+            <div class="info-block-value">
+              {{wetherData.main.temp_min  | number:'1.0-0'}}C
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/images/temp hot.png" alt="">
+            <span>Max</span>
+            <div class="info-block-value">
+              {{wetherData.main.temp_max  | number:'1.0-0'}}C
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/images/humidity.png" alt="">
+            <span>humidity</span>
+            <div class="info-block-value">
+              {{wetherData.main.humidity}}%
+            </div>
+          </div>
+        </div>
+
+        <div class="info-block">
+          <div class="info-block-label">
+            <img src="../assets/images/wint.png" alt="">
+            <span>Wind</span>
+            <div class="info-block-value">
+              {{wetherData.wind.speed}}km/h
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+  </div>
+</div>
+
+
+<!-- <router-outlet></router-outlet> -->
